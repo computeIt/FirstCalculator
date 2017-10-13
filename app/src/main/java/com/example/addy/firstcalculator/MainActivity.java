@@ -1,7 +1,7 @@
 package com.example.addy.firstcalculator;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import static java.lang.Float.*;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     final int MENU_RESET_ID = 1;
     final int MENU_QUIT_ID = 2;
 
@@ -35,7 +35,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         division = (Button) findViewById(R.id.division);
         multiply = (Button) findViewById(R.id.multiply);
 
-        result = findViewById(R.id.result);
+        result = (TextView) findViewById(R.id.result);
 
         addition.setOnClickListener(this);
         subtraction.setOnClickListener(this);
@@ -73,10 +73,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             default: break;
         }
 
-//        if("/".equals(action) && compare(num2, 0) == 0){
-//            result.setText("division by zero!!!");
-//            return;
-//        }
+        if("/".equals(action) && compare(num2, 0) == 0){
+            result.setText("Division on zero!!!");
+            return;
+        }
 
         result.setText(num1 + " " + action + " " + num2 + " = " + res);
     }
